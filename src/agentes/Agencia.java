@@ -34,8 +34,20 @@ import modelos.Paquete;
 public class Agencia extends Agent {
     private vistas.Agencia gui;
     private Paquete paquete;
+    private String slogan;
+
+    public String getSlogan() {
+        return slogan;
+    }
+
+    public void setSlogan(String slogan) {
+        this.slogan = slogan;
+    }
+    
     
     protected void setup() {
+        Object[] args = getArguments();
+        setSlogan(args[0].toString());
         gui = new vistas.Agencia(this);
         gui.setVisible(true);
         
@@ -48,8 +60,13 @@ public class Agencia extends Agent {
         sd.setName(this.getLocalName());
         dfd.addServices(sd);
 
-        // Actualizar registro y actualizar GUI
-        //DFService.modify(this, dfd);
+        try {
+            DFService.register(this, dfd);
+        } catch (FIPAException e) {
+            e.printStackTrace();
+        }
+        
+        
 
 
         // Agregar comportamiento ContractNetResponder (Venta de libros)

@@ -47,12 +47,13 @@ public class MiniProyectoAgentes {
             ac = mainContainer.createNewAgent("Cliente",
                     "agentes.Cliente", null);
             ac.start();
-
             // 4 personas
-            String[] personas = {"Eleazar", "Stefan", "German", "Bachaquero"};
+            String[] personas = {"vive ahora", "destino paraíso", "full travesía", "vuelta al sol"};
+            String[] slogans = {"y viaja con nosotros", "un lugar sin precedentes", "vive al limite", "365 dias en el paraiso"};
             for(int i = 0; i < personas.length; i++) {
+                Object[] argsAgent = {slogans[i]};
                 ac = mainContainer.createNewAgent(personas[i],
-                        "agentes.Agencia", null);
+                        "agentes.Agencia", argsAgent);
                 ac.start();
             }
         } catch (StaleProxyException e) {

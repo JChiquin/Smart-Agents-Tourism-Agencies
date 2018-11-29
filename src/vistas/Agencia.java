@@ -61,7 +61,13 @@ public class Agencia extends JFrame {
 
         
 
-        JLabel lblNewLabel = new JLabel("Vendedor");
+        JLabel lblNewLabel = new JLabel("Hola soy " + agencia.getLocalName());
+        add(lblNewLabel);
+        lblNewLabel = new JLabel("Nuestro lema es: " + agencia.getSlogan());
+        add(lblNewLabel);
+        lblNewLabel = new JLabel("AID: " + agencia.getAID());
+        add(lblNewLabel);
+        lblNewLabel = new JLabel("Estado " + agencia.getAgentState());
         add(lblNewLabel);
 
         modeloTablaPaquetes = new ModeloTablaPaquetes(new ArrayList<Paquete>());

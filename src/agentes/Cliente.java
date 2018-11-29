@@ -43,9 +43,14 @@ public class Cliente extends Agent {
         sd.setType("Cliente");
         sd.setName(this.getLocalName());
         dfd.addServices(sd);
+        try {
+            DFService.register(this, dfd);
+        } catch (FIPAException e) {
+            e.printStackTrace();
+        }
 
-        // Actualizar registro y actualizar GUI
-        //DFService.modify(this, dfd);
+        
+        
 
         System.out.println(this.getLocalName() + " iniciado");
     }
@@ -68,7 +73,7 @@ public class Cliente extends Agent {
 
         DFAgentDescription dfd = new DFAgentDescription();
         ServiceDescription sd = new ServiceDescription();
-        sd.setType("Vendedor");
+        sd.setType("Agencia");
         dfd.addServices(sd);
         try {
             DFAgentDescription[] result = DFService.search(this, dfd);
@@ -81,6 +86,8 @@ public class Cliente extends Agent {
 
         return vendedores;
     }
+    
+    
     
     public void buscarPaquete(Paquete paquete) {
         ACLMessage msg = new ACLMessage(ACLMessage.CFP);

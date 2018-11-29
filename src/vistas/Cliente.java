@@ -33,10 +33,14 @@ public class Cliente extends JFrame {
     private JPanel contentPane;
     private JTextField textFieldDineroDisponible;
     private JTextField textFieldNombre;
+    private JTextField textFieldNombreAgencia;
     private JPanel panel;
     private JPanel panel_1;
+    private JPanel panel_2;
+    private JPanel panel_3;
     private JLabel lblDineroDisponible;
     private JLabel lblDineroDisponible_1;
+    private JLabel lblDineroDisponible_2;
     private JLabel lblNewLabel;
 
     public Cliente(agentes.Cliente cliente) {
@@ -58,8 +62,13 @@ public class Cliente extends JFrame {
 
         
 
-        JLabel lblNewLabel = new JLabel("Cliente");
+        JLabel lblNewLabel = new JLabel("Hola soy " + cliente.getLocalName());
         add(lblNewLabel);
+        lblNewLabel = new JLabel("AID: " + cliente.getAID());
+        add(lblNewLabel);
+        lblNewLabel = new JLabel("Estado: " + cliente.getAgentState() );
+        add(lblNewLabel);
+        
 
         panel = new JPanel();
         add(panel);
@@ -103,6 +112,8 @@ public class Cliente extends JFrame {
                 }
             }
         });
+        
+
     }
 
     private boolean validarCampos() {
